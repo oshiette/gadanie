@@ -4,8 +4,8 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import android.widget.VideoView
 import com.example.compasapp.databinding.ActivityMainBinding
 
 
@@ -34,12 +34,19 @@ class MainActivity : AppCompatActivity() {
                     mediaPlayer.start()
                 }
             }
-            // Загрузить музыкальный файл из папки res/raw
+            // Загрузка музыки из папки res/raw
             mediaPlayer = MediaPlayer.create(this, R.raw.music)
 
         fun onDestroy() {
             super.onDestroy()
             mediaPlayer.release()
+        }
+
+        val playButton2 = findViewById<Button>(R.id.playBtn)
+
+        playButton2.setOnClickListener {
+            val intent = Intent(this, VideoActivity::class.java)
+            startActivity(intent)
         }
     }
     }
